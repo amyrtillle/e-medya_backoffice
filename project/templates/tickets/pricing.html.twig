@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+{% block title %}Home
+{% endblock %}
+{% block body %}
+	<h1>Tickets</h1>
+	<div class="container">
+		{% for item in message %}
+			<div class="ticket">
+				<div class="content">
+					<div>
+						<b>Titre du ticket :
+						</b>
+						<span>{{ item.fileid }}</span>
+					</div>
+					<div>
+						<b>Date du ticket :
+						</b>
+						<span>{{ item.getlastmodified }}</span>
+					</div>
+					<div>
+						<b>Lien serveur du ticket :
+						</b>
+						<span>{{ item.href }}</span>
+					</div>
+				</div>
+				<div class="actions">
+					<form action="{{ path('view_ticket', {'type': 'pricing', 'fileId': item.fileid}) }}" method="post" style="display: inline;">
+						<button type="submit">View</button>
+					</form>
+					<form action="{{ path('remove_ticket', {'type':'pricing', 'fileid': item.fileid}) }}" method="post" style="display: inline;">
+						<button type="submit">Delete</button>
+					</form>
+					<form action="{{ path('archive_ticket', {'type': 'pricing', 'fileid': item.fileid}) }}" method="post" style="display: inline;">
+						<button type="submit">Archive</button>
+					</form>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

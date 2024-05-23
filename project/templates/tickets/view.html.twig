@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}View Ticket
+{% endblock %}
+
+{% block body %}
+	<h1>View Ticket</h1>
+	<div class="ticket">
+		<div class="content">
+			{% for key, value in ticketData %}
+				{% if key == 'scenarioFileData' %}
+					{% if value%}
+						<div>
+							<b>{{ key }}
+								:
+							</b>
+							<iframe src="data:application/pdf;base64,{{value}}" width="100%" height="600px"></iframe>
+						</div>
+					{% endif %}
+				{% elseif key == 'visualIdentityFileData' %}
+					{% if ticketData.visualIdentityFileData is defined %}
+						<div>
+							<b>{{ key }}
+								:
+							</b>
+							<a href="data:application/zip;base64,{{ ticketData.visualIdentityFileData|url_encode }}" download="visual_identity.zip">
+								<span>Télécharger visual_identity.zip</span>
+							</a>
+
+						</div>
+					{% endif %}
+
+
+				{% else %}
+					<div>
+						<b>{{ key }}:</b>
+						<span>{{ value }}</span>
+					</div>
+				{% endif %}
+			{% endfor %}
+
+		</div>
+
+		<div class='action'>
+			<a href="{{ path('app_contact_tickets') }}" class="btn">Retour</a>
+			<form action="{{ path('remove_ticket', {'type': ticketData.type, 'fileid': ticketData.id}) }}" method="post" style="display: inline;">
+				<button type="submit">Delete</button>
+			</form>
+			<form action="{{ path('archive_ticket', {'type': ticketData.type, 'fileid': ticketData.id}) }}" method="post" style="display: inline;">
+				<button type="submit">Archive</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

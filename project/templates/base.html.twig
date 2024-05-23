@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}E-medya Backoffice!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg id='Calque_2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 276.71 188.44'><defs><style>.cls-1{fill:#c46faa;}.cls-2{fill:#5e539f;}.cls-3{fill:#8d6faf;}</style></defs><g id='Calque_4'><path class='cls-1' d='M102.15,0H10.46C4.68,0,0,4.68,0,10.46V172.28C0,181.21,7.24,188.44,16.16,188.44h0l52.59-81.67-8.08-12.55L110.95,16.13c4.48-6.96-.52-16.13-8.8-16.13Z'/><path class='cls-2' d='M83.89,83.53L0,35.11v115.44l83.89-48.42c7.16-4.13,7.16-14.47,0-18.6Z'/><polygon class='cls-2' points='252.93 80.89 269.08 145.62 241.51 188.44 209.74 147.96 252.93 80.89'/><polygon class='cls-2' points='158.18 80.89 164.46 105.35 110.96 188.44 100 171.25 158.18 80.89'/><path class='cls-3' d='M241.51,188.44l27.57-42.82,7.26,28.47c1.85,7.27-3.64,14.35-11.15,14.35h-23.68Z'/><path class='cls-3' d='M110.96,188.44L216.38,24.7c6.05-9.4,20.4-7.07,23.16,3.77l15.22,59.71-64.56,100.27H110.96Z'/><path class='cls-3' d='M16.16,188.44L121.59,24.7c6.05-9.4,20.4-7.07,23.16,3.77l15.22,59.71-64.56,100.27H16.16Z'/></g></svg>"> {% block stylesheets %}{% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
+	<body>
+		<header class=" header">
+			<nav class="nav">
+				<div class="routes">
+					<ul class="nav-list">
+						<li class="nav-element">
+							<a href="{{path('app_tickets_types')}}">Menu</a>
+						</li>
+						<li class="nav-element">
+							<a href="{{path('app_pricing_tickets')}}">Demandes de devis</a>
+						</li>
+						<li class="nav-element">
+							<a href="{{path('app_contact_tickets')}}">Demandes de contact</a>
+						</li>
+					</ul>
+				</div>
+				<div class="log">
+					<a href="/logout">Se déconnecter</a>
+				</div>
+			</nav>
+		</head>
+	</body>
+</html></header><main>
+{% block body %}{% endblock %}</main></body></html>

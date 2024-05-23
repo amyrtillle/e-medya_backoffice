@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+{% block title %}Home
+{% endblock %}
+{% block body %}
+	<h1>Tickets types</h1>
+	<div class="container">
+		<a href="{{ path('app_pricing_tickets') }}">Tickets de devis</a>
+		<a href="{{ path('app_contact_tickets') }}">Tickets de contacts</a>
+	</div>
+{% endblock %}
