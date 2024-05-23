@@ -1,3 +1,5 @@
+#This docker compose file is used to work locally with the project
+
 version: '3.8'
 services:
   db:
@@ -9,7 +11,7 @@ services:
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     networks:
-      - tutorial
+      - web
 
   # phpmyadmin container
   phpmyadmin:
@@ -23,7 +25,7 @@ services:
     environment:
       PMA_HOST: db
     networks:
-      - tutorial
+      - web
 
   # Symfony apache project container
   www:
@@ -36,10 +38,10 @@ services:
       - ./:/var/www
     restart: always
     networks:
-      - tutorial
+      - web
 
 networks:
-  tutorial:
+  web:
 
 volumes:
   db-data:
